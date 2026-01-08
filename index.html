@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameya Energy Solutions | Premium Solar & Electrical Services Maharashtra</title>
+    <meta name="description" content="Ameya Energy Solutions - Maharashtra's trusted partner for Residential Solar, Commercial Rooftops, Agriculture Pumps, and HT/LT Electrical Works.">
+    
+    <!-- Google Fonts: Poppins for headings, Inter for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* * AMEYA BRAND SYSTEM 
+         * Theme: "Corporate Trust & Power"
+         */
+        :root {
+            /* Brand Colors */
+            --primary-navy: #0F172A;      /* Deep Slate Navy - Authority */
+            --primary-blue: #0369A1;      /* Trust Blue - Clarity */
+            --primary-light: #F0F9FF;     /* Sky Blue Tint - Backgrounds */
+            
+            --accent-gold: #D97706;       /* Deep Amber - Energy */
+            --accent-yellow: #FBBF24;     /* Bright Solar Yellow - Highlights */
+            
+            --text-main: #334155;         /* Slate 700 */
+            --text-muted: #64748B;        /* Slate 500 */
+            
+            --bg-white: #FFFFFF;
+            --bg-off-white: #F8FAFC;
+            
+            --success-green: #10B981;
+            --whatsapp-green: #25D366;
+
+            /* Dimensions & Spacing */
+            --container-width: 1200px;
+            --header-height: 80px;
+            
+            /* Shadows & Effects */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-card: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            
+            --radius-card: 16px;
+            --radius-btn: 50px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- RESET & BASE --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-off-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-navy);
+            line-height: 1.25;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; height: auto; }
+        
+        /* Layout Utilities */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .section-padding { padding: 5rem 0; }
+        
+        .grid { display: grid; gap: 2rem; }
+        
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px; /* Optimized height for header */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links { display: none; } /* Mobile Hidden */
+
+        .desktop-cta { display: none; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            /* Professional Dark Blue Gradient Overlay */
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(3, 105, 161, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--bg-white);
+            padding: 8rem 0 6rem;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--accent-yellow);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-btn);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--bg-white);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #CBD5E1; /* Light Slate */
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            max-width: 320px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-gold) 100%);
+            color: var(--primary-navy);
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: white;
+        }
+
+        /* --- TITLES --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 0.75rem auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- SERVICES GRID (Expanded for 6 items) --- */
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .service-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.6), transparent);
+        }
+
+        .service-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary-navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-link {
+            margin-top: auto;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* --- TRUST / ABOUT --- */
+        .trust-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .trust-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--radius-card);
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* --- SAVINGS / BENEFITS --- */
+        .savings-section {
+            background: linear-gradient(to bottom, var(--bg-off-white), var(--bg-white));
+        }
+
+        .savings-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .savings-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid var(--success-green);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .savings-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-card);
+        }
+
+        /* --- CONTACT --- */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            border-radius: var(--radius-card);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container {
+            display: grid;
+            gap: 2rem;
+            background: var(--bg-white);
+            border-radius: var(--radius-card);
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .contact-item:last-child { border-bottom: none; }
+        
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary-navy);
+            color: #94A3B8;
+            padding: 4rem 0 6rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- MOBILE STICKY BAR --- */
+        .mobile-sticky-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 420px;
+            display: flex;
+            z-index: 9999;
+            background: white;
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .sticky-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius: 40px;
+            transition: var(--transition);
+        }
+
+        .sticky-call {
+            background-color: transparent;
+            color: var(--primary-navy);
+        }
+
+        .sticky-wa {
+            background-color: var(--whatsapp-green);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                font-weight: 500;
+                font-size: 0.95rem;
+            }
+            .nav-links a:hover { color: var(--primary-blue); }
+            
+            .desktop-cta { display: block; }
+
+            .hero h1 { font-size: 3.5rem; }
+            .hero-buttons { flex-direction: row; justify-content: center; }
+
+            .trust-grid { grid-template-columns: repeat(4, 1fr); }
+            
+            .contact-container { padding: 3rem; }
+            
+            .mobile-sticky-bar { display: none; }
+            footer { padding-bottom: 4rem; }
+        }
+
+        /* Marathi Font Fix */
+        .marathi-text { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <img src="lo.png" alt="Ameya Energy Solutions Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">Why Us</a></li>
+                <li><a href="#benefits">Savings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="desktop-cta">
+                <a href="#contact" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
+                    <i data-lucide="phone" size="18"></i> Get Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-tag">Certified Electrical & Solar Experts</span>
+            <h1 class="marathi-text">वीज बिल करा शून्य! <br>Ameya Energy Solutions</h1>
+            <p>Maharashtra's most trusted partner for Solar Rooftop, Agriculture Pumps, and HT/LT Electrical Works. Approved for Government Subsidy.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i data-lucide="phone-call" size="20"></i> Book Free Site Visit
+                </a>
+                <a href="https://wa.me/919999999999" class="btn btn-whatsapp">
+                    <i data-lucide="message-circle" size="20"></i> WhatsApp Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Points -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Ameya?</h2>
+                <p class="section-subtitle">Delivering power and trust across Maharashtra since 2015.</p>
+            </div>
+            
+            <div class="grid trust-grid">
+                <div class="trust-card">
+                    <div class="icon-box">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3>Govt. Approved</h3>
+                    <p>Authorized channel partner for subsidies under PM Surya Ghar Yojana.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon-box">
+                        <i data-lucide="hard-hat"></i>
+                    </div>
+                    <h3>Certified Engineers</h3>
+                    <p>Expert team for complex HT/LT electrical and transformer works.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon-box">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <h3>25 Years Warranty</h3>
+                    <p>Performance warranty on solar panels with local service support.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon-box">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <h3>Local Trust</h3>
+                    <p>Based in Maharashtra, providing fast service within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section-padding" style="background-color: var(--bg-white);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Core Services</h2>
+                <p class="section-subtitle">Comprehensive energy solutions for Homes, Industries, and Farms.</p>
+            </div>
+            <div class="grid services-grid">
+                <!-- Service 1: Residential -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1624397640148-949b1732bb0a?auto=format&fit=crop&w=800&q=80');">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <h3><i data-lucide="home" size="20" color="#D97706"></i> Residential Solar</h3>
+                        <p>Turn your roof into an asset. Ideal for bungalows and apartments. Avail up to 40% Govt Subsidy.</p>
+                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Commercial -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=800&q=80');">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <h3><i data-lucide="building-2" size="20" color="#D97706"></i> Commercial Solar</h3>
+                        <p>High-efficiency On-Grid systems for factories, hospitals, and offices to reduce operational costs.</p>
+                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Agriculture Pumps (NEW) -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1599557250766-4148f4803525?auto=format&fit=crop&w=800&q=80');">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <h3><i data-lucide="sprout" size="20" color="#D97706"></i> Agri Solar Pumps</h3>
+                        <p>Reliable solar water pumps for farming. No dependence on grid electricity schedules.</p>
+                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                    </div>
+                </div>
+
+                <!-- Service 4: HT/LT Works (NEW) -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80');">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <h3><i data-lucide="zap" size="20" color="#D97706"></i> HT/LT Electrical</h3>
+                        <p>Licensed High Tension & Low Tension line works, cabling, and industrial wiring contracts.</p>
+                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                    </div>
+                </div>
+
+                <!-- Service 5: DTC Work (NEW) -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1563968743333-044cef800494?auto=format&fit=crop&w=800&q=80');">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <h3><i data-lucide="activity" size="20" color="#D97706"></i> DTC / Transformer</h3>
+                        <p>Installation, maintenance, and capacity enhancement of Distribution Transformer Centers.</p>
+                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Liaisoning -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80');">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <h3><i data-lucide="file-check" size="20" color="#D97706"></i> Govt. Liaisoning</h3>
+                        <p>Complete paperwork handling for MSEDCL approvals, meter testing, and subsidy disbursement.</p>
+                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits & CTA -->
+    <section id="benefits" class="section-padding savings-section">
+        <div class="container">
+            <div class="savings-container">
+                <div class="section-header" style="margin-bottom: 2rem; text-align: left;">
+                    <h2 class="section-title marathi-text">Solar बसवण्याचे फायदे</h2>
+                    <p class="section-subtitle" style="margin:0;">Why smart property owners are switching to Ameya Energy Solutions.</p>
+                </div>
+                
+                <div class="savings-item">
+                    <i data-lucide="indian-rupee" color="#25D366" size="28" style="min-width: 28px;"></i>
+                    <div>
+                        <h4 class="marathi-text">90% Savings on Electricity Bills</h4>
+                        <p class="text-muted">Generate your own power. ROI typically achieved within 3-4 years.</p>
+                    </div>
+                </div>
+                <div class="savings-item">
+                    <i data-lucide="sun" color="#F59E0B" size="28" style="min-width: 28px;"></i>
+                    <div>
+                        <h4 class="marathi-text">Free Electricity for 25 Years</h4>
+                        <p class="text-muted">Our Tier-1 solar panels are designed to last over 2 decades with minimal maintenance.</p>
+                    </div>
+                </div>
+                <div class="savings-item">
+                    <i data-lucide="file-check" color="#0369A1" size="28" style="min-width: 28px;"></i>
+                    <div>
+                        <h4 class="marathi-text">PM Surya Ghar Yojana Subsidy</h4>
+                        <p class="text-muted">We assist you in getting direct bank subsidies from the Central Government.</p>
+                    </div>
+                </div>
+                
+                <div class="cta-box">
+                    <h3 class="marathi-text" style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">मोफत साईट व्हिजिटसाठी आजच कॉल करा</h3>
+                    <p style="margin-bottom: 2rem; opacity: 0.9;">Our engineer will visit your location to provide a technical feasibility report.</p>
+                    <a href="tel:+919999999999" class="btn" style="background: white; color: var(--primary-navy);">Call Now: +91 99XXX XXXXX</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding" style="background: var(--bg-white);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Visit Our Office</h2>
+                <p class="section-subtitle">Let's discuss your energy requirements.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.25rem;">Head Office</h4>
+                        <p class="text-muted">Office No. 101, Galaxy Tower, Market Yard Road,<br>[City], Maharashtra - 411037</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="phone"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.25rem;">Customer Support</h4>
+                        <a href="tel:+919999999999" style="font-size: 1.1rem; font-weight: 600;">+91 99XXX XXXXX</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="mail"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.25rem;">Email Us</h4>
+                        <p class="text-muted">info@ameyaenergy.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                <img src="logo.jpg" alt="Ameya Energy Solutions" style="height: 50px; opacity: 0.9; filter: brightness(0) invert(1);">
+            </div>
+            <p>&copy; 2024 Ameya Energy Solutions. All Rights Reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.5;">Powering Maharashtra.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Footer Buttons -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:+919999999999" class="sticky-btn sticky-call">
+            <i data-lucide="phone" size="18"></i> Call
+        </a>
+        <a href="https://wa.me/919999999999?text=Hi%20Ameya%20Energy,%20I%20need%20Solar%20Info" class="sticky-btn sticky-wa">
+            <i data-lucide="message-circle" size="18"></i> WhatsApp
+        </a>
+    </div>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
