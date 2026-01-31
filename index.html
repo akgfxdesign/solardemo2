@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ameya Energy Solutions | Premium Solar & Electrical Services Maharashtra</title>
-    <meta name="description" content="Ameya Energy Solutions - Maharashtra's trusted partner for Residential Solar, Commercial Rooftops, Agriculture Pumps, and HT/LT Electrical Works.">
+    <title>Ameya Energy Solutions | Solar & Electrical Experts Khamgaon</title>
+    <meta name="description" content="Ameya Energy Solutions - Khamgaon's trusted partner for Rooftop Solar, Commercial Projects, Agri Pumps, HT/LT Lines, and Substation Work.">
     
     <!-- Google Fonts: Poppins for headings, Inter for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,22 +108,75 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            gap: 12px;
         }
 
         .logo-img {
-            height: 60px; /* Optimized height for header */
+            height: 55px; /* Optimized height */
             width: auto;
             object-fit: contain;
         }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+            line-height: 1.1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text span {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
 
-        .nav-links { display: none; } /* Mobile Hidden */
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: var(--primary-navy);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-links { 
+            display: none; 
+            position: absolute;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            background: var(--bg-white);
+            flex-direction: column;
+            padding: 1rem;
+            box-shadow: var(--shadow-card);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        } 
+        
+        .nav-links.active {
+            display: flex;
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        .nav-links li {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: center;
+        }
+        .nav-links li:last-child { border-bottom: none; }
 
         .desktop-cta { display: none; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
-            /* Professional Dark Blue Gradient Overlay */
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(3, 105, 161, 0.85) 100%), 
                         url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -232,9 +285,10 @@
             margin: 0 auto;
         }
 
-        /* --- SERVICES GRID (Expanded for 6 items) --- */
+        /* --- SERVICES GRID --- */
         .services-grid {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Mobile Default: 1 Column */
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
 
@@ -290,7 +344,8 @@
             margin-bottom: 1.5rem;
         }
         
-        .service-link {
+        /* Updated Service Link Button Style */
+        .service-link-btn {
             margin-top: auto;
             color: var(--primary-blue);
             font-weight: 600;
@@ -298,6 +353,152 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+        }
+        .service-link-btn:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- MODAL SYSTEM --- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.9); /* Darker backdrop for gallery */
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--bg-white);
+            width: 95%;
+            max-width: 900px; /* Wider for gallery */
+            max-height: 90vh;
+            border-radius: var(--radius-card);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease forwards;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            z-index: 10;
+            transition: var(--transition);
+            color: var(--text-main);
+        }
+
+        .close-modal:hover { transform: rotate(90deg); background: var(--accent-gold); color: white; }
+
+        .modal-body { 
+            padding: 0; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-text { padding: 2rem; }
+
+        /* --- GALLERY STYLES --- */
+        .gallery-container {
+            width: 100%;
+            background: #f1f5f9;
+            padding: 20px 0;
+        }
+        
+        .gallery-label {
+            padding: 0 2rem 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 0 2rem 20px; /* Side padding aligns with text */
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 3px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+
+        .gallery-img {
+            height: 400px; /* Tall images look good */
+            width: auto;
+            max-width: 80vw;
+            object-fit: contain; /* Show full image including context */
+            border-radius: 8px;
+            scroll-snap-align: center;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+        
+        @media(max-width: 768px) {
+            .gallery-img {
+                height: 300px;
+            }
+            .gallery-scroll {
+                padding: 0 1rem 15px;
+            }
+            .gallery-label {
+                padding: 0 1rem 10px;
+            }
         }
 
         /* --- TRUST / ABOUT --- */
@@ -459,12 +660,24 @@
 
         /* --- MEDIA QUERIES --- */
         @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
             .nav-links {
                 display: flex;
+                position: static;
+                flex-direction: row;
+                width: auto;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
                 gap: 2rem;
                 font-weight: 500;
                 font-size: 0.95rem;
+                border-top: none;
             }
+            .nav-links li { border-bottom: none; padding: 0; }
             .nav-links a:hover { color: var(--primary-blue); }
             
             .desktop-cta { display: block; }
@@ -474,10 +687,18 @@
 
             .trust-grid { grid-template-columns: repeat(4, 1fr); }
             
+            /* Responsive Grid for Services - 2 cols on Tablet, 3 on Desktop */
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+
             .contact-container { padding: 3rem; }
             
             .mobile-sticky-bar { display: none; }
             footer { padding-bottom: 4rem; }
+        }
+
+        @media (min-width: 1024px) {
+            /* 3 Columns for Desktop to nice display 6 services */
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         /* Marathi Font Fix */
@@ -491,12 +712,22 @@
         <div class="container nav-wrapper">
             <a href="#" class="logo">
                 <img src="lo.png" alt="Ameya Energy Solutions Logo" class="logo-img">
+                <div class="logo-text">
+                    Ameya
+                    <span>Energy Solutions</span>
+                </div>
             </a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">Why Us</a></li>
-                <li><a href="#benefits">Savings</a></li>
-                <li><a href="#contact">Contact</a></li>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <i data-lucide="menu" size="28"></i>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+                <li><a href="#about" onclick="toggleMenu()">Why Us</a></li>
+                <li><a href="#benefits" onclick="toggleMenu()">Savings</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
             </ul>
             <div class="desktop-cta">
                 <a href="#contact" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
@@ -509,14 +740,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <span class="hero-tag">Certified Electrical & Solar Experts</span>
-            <h1 class="marathi-text">वीज बिल करा शून्य! <br>Ameya Energy Solutions</h1>
-            <p>Maharashtra's most trusted partner for Solar Rooftop, Agriculture Pumps, and HT/LT Electrical Works. Approved for Government Subsidy.</p>
+            <span class="hero-tag">Solar | Electrical | Infrastructure</span>
+            <h1 class="marathi-text">Your Trusted Energy Partner <br>Ameya Energy Solutions</h1>
+            <p>Expert Residential & Commercial Solar Rooftop, Agriculture Pumps, and Class-A Electrical Contractor for HT/LT Lines.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">
                     <i data-lucide="phone-call" size="20"></i> Book Free Site Visit
                 </a>
-                <a href="https://wa.me/919999999999" class="btn btn-whatsapp">
+                <a href="https://wa.me/917397898506" class="btn btn-whatsapp">
                     <i data-lucide="message-circle" size="20"></i> WhatsApp Now
                 </a>
             </div>
@@ -528,7 +759,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Why Choose Ameya?</h2>
-                <p class="section-subtitle">Delivering power and trust across Maharashtra since 2015.</p>
+                <p class="section-subtitle">Delivering power and trust across Maharashtra.</p>
             </div>
             
             <div class="grid trust-grid">
@@ -536,29 +767,29 @@
                     <div class="icon-box">
                         <i data-lucide="shield-check"></i>
                     </div>
-                    <h3>Govt. Approved</h3>
-                    <p>Authorized channel partner for subsidies under PM Surya Ghar Yojana.</p>
+                    <h3>Quality Assurance</h3>
+                    <p>We use premium panels and structures for long-lasting performance.</p>
                 </div>
                 <div class="trust-card">
                     <div class="icon-box">
                         <i data-lucide="hard-hat"></i>
                     </div>
-                    <h3>Certified Engineers</h3>
-                    <p>Expert team for complex HT/LT electrical and transformer works.</p>
+                    <h3>Technical Expertise</h3>
+                    <p>Experts in complex Erection of H.T, L.T Lines and Transformer works.</p>
                 </div>
                 <div class="trust-card">
                     <div class="icon-box">
                         <i data-lucide="award"></i>
                     </div>
-                    <h3>25 Years Warranty</h3>
-                    <p>Performance warranty on solar panels with local service support.</p>
+                    <h3>End-to-End Service</h3>
+                    <p>From consultation to installation and subsidy paperwork.</p>
                 </div>
                 <div class="trust-card">
                     <div class="icon-box">
                         <i data-lucide="map-pin"></i>
                     </div>
                     <h3>Local Trust</h3>
-                    <p>Based in Maharashtra, providing fast service within 24 hours.</p>
+                    <p>Based in Khamgaon, providing reliable local service support.</p>
                 </div>
             </div>
         </div>
@@ -568,79 +799,91 @@
     <section id="services" class="section-padding" style="background-color: var(--bg-white);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Our Core Services</h2>
-                <p class="section-subtitle">Comprehensive energy solutions for Homes, Industries, and Farms.</p>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive energy solutions as per your needs.</p>
             </div>
             <div class="grid services-grid">
                 <!-- Service 1: Residential -->
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1624397640148-949b1732bb0a?auto=format&fit=crop&w=800&q=80');">
+                    <div class="service-img" style="background-image: url('Residental/10.jpeg');">
                         <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
                         <h3><i data-lucide="home" size="20" color="#D97706"></i> Residential Solar</h3>
-                        <p>Turn your roof into an asset. Ideal for bungalows and apartments. Avail up to 40% Govt Subsidy.</p>
-                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                        <p>Turn your roof into an asset. Ideal for bungalows and apartments. Avail Govt Subsidy.</p>
+                        <button onclick="openModal('residential-modal')" class="service-link-btn">
+                            View Project Photos <i data-lucide="camera" size="16"></i>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Service 2: Commercial -->
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=800&q=80');">
+                    <div class="service-img" style="background-image: url('Comertial/c6.jpeg');">
                         <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
-                        <h3><i data-lucide="building-2" size="20" color="#D97706"></i> Commercial Solar</h3>
-                        <p>High-efficiency On-Grid systems for factories, hospitals, and offices to reduce operational costs.</p>
-                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                        <h3><i data-lucide="building-2" size="20" color="#D97706"></i> Commercial Projects</h3>
+                        <p>High-efficiency systems for factories, hospitals, and offices to reduce operational costs.</p>
+                        <button onclick="openModal('commercial-modal')" class="service-link-btn">
+                            View Project Photos <i data-lucide="camera" size="16"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service 3: Agriculture Pumps (NEW) -->
+                <!-- Service 3: Agriculture Pumps (Re-added) -->
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1599557250766-4148f4803525?auto=format&fit=crop&w=800&q=80');">
+                    <div class="service-img" style="background-image: url('3-hp-solar-agricultural-pump-20250528173409211.jpg');">
                         <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
-                        <h3><i data-lucide="sprout" size="20" color="#D97706"></i> Agri Solar Pumps</h3>
-                        <p>Reliable solar water pumps for farming. No dependence on grid electricity schedules.</p>
-                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                        <h3><i data-lucide="sprout" size="20" color="#D97706"></i> Agri Solar Pump</h3>
+                        <p>Reliable solar water pumps for farming. Independence from grid schedules.</p>
+                        <button class="service-link-btn" onclick="document.querySelector('#contact').scrollIntoView()">
+                            View Details <i data-lucide="arrow-right" size="16"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service 4: HT/LT Works (NEW) -->
+                <!-- Service 4: HT/LT Works -->
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80');">
+                    <div class="service-img" style="background-image: url('WhatsApp Image 2026-01-31 at 3.21.49 PM (2).jpeg');">
                         <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
-                        <h3><i data-lucide="zap" size="20" color="#D97706"></i> HT/LT Electrical</h3>
-                        <p>Licensed High Tension & Low Tension line works, cabling, and industrial wiring contracts.</p>
-                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                        <h3><i data-lucide="zap" size="20" color="#D97706"></i> Erection of HT/LT Lines</h3>
+                        <p>Licensed High Tension & Low Tension line works, cabling, and industrial wiring.</p>
+                        <button onclick="openModal('electrical-modal')" class="service-link-btn">
+                            View Project Photos <i data-lucide="camera" size="16"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service 5: DTC Work (NEW) -->
+                <!-- Service 5: Transformer -->
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1563968743333-044cef800494?auto=format&fit=crop&w=800&q=80');">
+                    <div class="service-img" style="background-image: url('WhatsApp Image 2026-01-31 at 3.11.46 PM.jpeg');">
                         <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
-                        <h3><i data-lucide="activity" size="20" color="#D97706"></i> DTC / Transformer</h3>
-                        <p>Installation, maintenance, and capacity enhancement of Distribution Transformer Centers.</p>
-                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                        <h3><i data-lucide="activity" size="20" color="#D97706"></i> Transformer</h3>
+                        <p>Installation, maintenance, and capacity enhancement of Distribution Transformers (DTC).</p>
+                        <button onclick="openModal('electrical-modal')" class="service-link-btn">
+                            View Project Photos <i data-lucide="camera" size="16"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Service 6: Liaisoning -->
+                <!-- Service 6: Substation Work (Replaced Govt Liaisoning) -->
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80');">
+                    <div class="service-img" style="background-image: url('WhatsApp Image 2026-01-31 at 3.12.08 PM.jpeg');">
                         <div class="service-img-overlay"></div>
                     </div>
                     <div class="service-content">
-                        <h3><i data-lucide="file-check" size="20" color="#D97706"></i> Govt. Liaisoning</h3>
-                        <p>Complete paperwork handling for MSEDCL approvals, meter testing, and subsidy disbursement.</p>
-                        <div class="service-link">View Details <i data-lucide="arrow-right" size="16"></i></div>
+                        <h3><i data-lucide="factory" size="20" color="#D97706"></i> S/Stn. Work</h3>
+                        <p>Specialized Substation work, panel installation, and industrial electrification.</p>
+                        <button onclick="openModal('electrical-modal')" class="service-link-btn">
+                            View Project Photos <i data-lucide="camera" size="16"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -673,15 +916,15 @@
                 <div class="savings-item">
                     <i data-lucide="file-check" color="#0369A1" size="28" style="min-width: 28px;"></i>
                     <div>
-                        <h4 class="marathi-text">PM Surya Ghar Yojana Subsidy</h4>
-                        <p class="text-muted">We assist you in getting direct bank subsidies from the Central Government.</p>
+                        <h4 class="marathi-text">Subsidy Approved</h4>
+                        <p class="text-muted">We assist you in getting direct bank subsidies from the Government.</p>
                     </div>
                 </div>
                 
                 <div class="cta-box">
                     <h3 class="marathi-text" style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">मोफत साईट व्हिजिटसाठी आजच कॉल करा</h3>
                     <p style="margin-bottom: 2rem; opacity: 0.9;">Our engineer will visit your location to provide a technical feasibility report.</p>
-                    <a href="tel:+919999999999" class="btn" style="background: white; color: var(--primary-navy);">Call Now: +91 99XXX XXXXX</a>
+                    <a href="tel:+917397898506" class="btn" style="background: white; color: var(--primary-navy);">Call Now: +91 73978 98506</a>
                 </div>
             </div>
         </div>
@@ -699,22 +942,22 @@
                 <div class="contact-item">
                     <div class="contact-icon"><i data-lucide="map-pin"></i></div>
                     <div>
-                        <h4 style="margin-bottom: 0.25rem;">Head Office</h4>
-                        <p class="text-muted">Office No. 101, Galaxy Tower, Market Yard Road,<br>[City], Maharashtra - 411037</p>
+                        <h4 style="margin-bottom: 0.25rem;">Address</h4>
+                        <p class="text-muted">Jalamb Naka Near Khamgaon Urban Mahila Branch,<br>Khamgaon - 444303 (MH)</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><i data-lucide="phone"></i></div>
                     <div>
-                        <h4 style="margin-bottom: 0.25rem;">Customer Support</h4>
-                        <a href="tel:+919999999999" style="font-size: 1.1rem; font-weight: 600;">+91 99XXX XXXXX</a>
+                        <h4 style="margin-bottom: 0.25rem;">Call / WhatsApp</h4>
+                        <a href="tel:+917397898506" style="font-size: 1.1rem; font-weight: 600;">+91 73978 98506</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><i data-lucide="mail"></i></div>
                     <div>
                         <h4 style="margin-bottom: 0.25rem;">Email Us</h4>
-                        <p class="text-muted">info@ameyaenergy.com</p>
+                        <p class="text-muted">ameyenergy.solutions@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -724,27 +967,209 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                <img src="logo.jpg" alt="Ameya Energy Solutions" style="height: 50px; opacity: 0.9; filter: brightness(0) invert(1);">
+            <!-- Updated Footer Logo with Company Name -->
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; gap: 12px;">
+                <!-- Added background:white to make logo visible like in header -->
+                <img src="lo.png" alt="Ameya Energy Solutions" style="height: 55px; background: white; padding: 4px; border-radius: 6px; object-fit: contain;">
+                <div style="text-align: left; font-family: 'Poppins', sans-serif;">
+                    <span style="display: block; font-size: 1.4rem; font-weight: 700; color: white; line-height: 1.1;">Ameya</span>
+                    <span style="display: block; font-size: 0.9rem; font-weight: 600; color: var(--accent-gold); letter-spacing: 0.5px;">Energy Solutions</span>
+                </div>
             </div>
-            <p>&copy; 2024 Ameya Energy Solutions. All Rights Reserved.</p>
+            
+            <!-- Social Media Links -->
+            <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                <a href="https://www.instagram.com/ameya_energy.solutions?igsh=MWUwdzR0djdpM29qMA==" target="_blank" style="display: flex; align-items: center; gap: 8px; color: white; opacity: 0.9; text-decoration: none; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; transition: all 0.3s;">
+                    <i data-lucide="instagram" size="20"></i> Follow us on Instagram
+                </a>
+            </div>
+
+            <p>&copy; 2026 Ameya Energy Solutions. All Rights Reserved.</p>
             <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.5;">Powering Maharashtra.</p>
         </div>
     </footer>
 
     <!-- Mobile Sticky Footer Buttons -->
     <div class="mobile-sticky-bar">
-        <a href="tel:+919999999999" class="sticky-btn sticky-call">
+        <a href="tel:+917397898506" class="sticky-btn sticky-call">
             <i data-lucide="phone" size="18"></i> Call
         </a>
-        <a href="https://wa.me/919999999999?text=Hi%20Ameya%20Energy,%20I%20need%20Solar%20Info" class="sticky-btn sticky-wa">
+        <a href="https://wa.me/917397898506?text=Hi%20Ameya%20Energy,%20I%20need%20Solar%20Info" class="sticky-btn sticky-wa">
             <i data-lucide="message-circle" size="18"></i> WhatsApp
         </a>
     </div>
 
-    <!-- Initialize Icons -->
+    <!-- Residential Modal Structure -->
+    <div id="residential-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('residential-modal')">
+                <i data-lucide="x" size="24"></i>
+            </div>
+            <div class="modal-body">
+                <!-- Gallery Container -->
+                <div class="gallery-container">
+                    <div class="gallery-label">
+                        <span>Latest Installations</span>
+                        <span>Swipe to view <i data-lucide="arrow-right" size="14" style="display:inline; vertical-align:middle;"></i></span>
+                    </div>
+                    <div class="gallery-scroll">
+                        <!-- All 10 Client Images -->
+                        <img src="Residental/1.jpeg" class="gallery-img" alt="Ameya Solar Site 1">
+                        <img src="Residental/2.jpeg" class="gallery-img" alt="Ameya Solar Site 2">
+                        <img src="Residental/3.jpeg" class="gallery-img" alt="Ameya Solar Inverter Setup">
+                        <img src="Residental/4.jpeg" class="gallery-img" alt="Ameya Solar Structure">
+                        <img src="Residental/5.jpeg" class="gallery-img" alt="Ameya Solar Distribution Box">
+                        <img src="Residental/6.jpeg" class="gallery-img" alt="Ameya Solar Client 1">
+                        <img src="Residental/7.jpeg" class="gallery-img" alt="Ameya Solar Client 2">
+                        <img src="Residental/8.jpeg" class="gallery-img" alt="Ameya Solar Client 3">
+                        <img src="Residental/9.jpeg" class="gallery-img" alt="Ameya Solar Side View">
+                        <img src="Residental/10.jpeg" class="gallery-img" alt="Ameya Solar Elevated Structure">
+                    </div>
+                </div>
+                
+                <div class="modal-text">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-navy);">Residential Solar Rooftop Systems</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                        See our actual site work above. We construct high-quality, elevated structures that allow you to use the space below for water tanks or other utilities. Our wiring is concealed and protected for safety.
+                    </p>
+                    <ul style="display: grid; gap: 10px; margin-bottom: 2rem;">
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>Sturdy Galvanized Structure</span></li>
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>Clean Inverter & Box Installation</span></li>
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>Subsidy Approved Projects</span></li>
+                    </ul>
+                    <a href="https://wa.me/917397898506?text=I%20saw%20your%20projects%20and%20want%20a%20quote" class="btn btn-primary" style="width: auto;">Request Quote for Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commercial Modal Structure -->
+    <div id="commercial-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('commercial-modal')">
+                <i data-lucide="x" size="24"></i>
+            </div>
+            <div class="modal-body">
+                <!-- Gallery Container -->
+                <div class="gallery-container">
+                    <div class="gallery-label">
+                        <span>Commercial Installations</span>
+                        <span>Swipe to view <i data-lucide="arrow-right" size="14" style="display:inline; vertical-align:middle;"></i></span>
+                    </div>
+                    <div class="gallery-scroll">
+                        <!-- Commercial Images -->
+                        <img src="Comertial/c1.jpeg" class="gallery-img" alt="Ameya Commercial Structure 1">
+                        <img src="Comertial/c2.jpeg" class="gallery-img" alt="Ameya Commercial Structure 2">
+                        <img src="Comertial/c3.jpeg" class="gallery-img" alt="Ameya Commercial Structure 3">
+                        <img src="Comertial/c4.jpeg" class="gallery-img" alt="Ameya Commercial Panels 1">
+                        <img src="Comertial/c5.jpeg" class="gallery-img" alt="Ameya Commercial Panels 2">
+                        <img src="Comertial/c6.jpeg" class="gallery-img" alt="Ameya Commercial Panels 3">
+                    </div>
+                </div>
+                
+                <div class="modal-text">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-navy);">Commercial & Industrial Solar</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                        Empower your business with our high-capacity solar solutions. We specialize in elevated superstructures for factories and commercial buildings, ensuring zero shadow and maximum generation.
+                    </p>
+                    <ul style="display: grid; gap: 10px; margin-bottom: 2rem;">
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>Custom Elevated Structures</span></li>
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>Accelerated Depreciation Benefit (Tax)</span></li>
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>3-4 Year ROI Guarantee</span></li>
+                    </ul>
+                    <a href="https://wa.me/917397898506?text=I%20want%20a%20quote%20for%20Commercial%20Solar" class="btn btn-primary" style="width: auto;">Request Commercial Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ELECTRICAL INFRASTRUCTURE & DEVELOPER MODAL -->
+    <div id="electrical-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('electrical-modal')">
+                <i data-lucide="x" size="24"></i>
+            </div>
+            <div class="modal-body">
+                <!-- Gallery Container -->
+                <div class="gallery-container">
+                    <div class="gallery-label">
+                        <span>Infrastructure & Heavy Electrical Projects</span>
+                        <span>Swipe to view <i data-lucide="arrow-right" size="14" style="display:inline; vertical-align:middle;"></i></span>
+                    </div>
+                    <div class="gallery-scroll">
+                        <!-- 1. Industrial VCB & Control Panels (Indoor Heavy Equipment) -->
+                        <img src="WhatsApp Image 2026-01-31 at 3.12.08 PM.jpeg" class="gallery-img" alt="HUPHEN Electromech VCB Panel">
+                        <img src="WhatsApp Image 2026-01-31 at 3.12.07 PM.jpeg" class="gallery-img" alt="Industrial Incoming/Outgoing Panel">
+                        <img src="WhatsApp Image 2026-01-31 at 3.12.06 PM (1).jpeg" class="gallery-img" alt="Panel Installation Room">
+                        <img src="WhatsApp Image 2026-01-31 at 3.12.03 PM.jpeg" class="gallery-img" alt="HT VCB Panel Incoming Supply">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.47 PM.jpeg" class="gallery-img" alt="HT Panel 11kV Danger Plate">
+                        
+                        <!-- 2. Outdoor Infrastructure (DTCs, Transformers, Poles) -->
+                        <img src="WhatsApp Image 2026-01-31 at 3.21.49 PM (2).jpeg" class="gallery-img" alt="HT Line Pole Structure">
+                        <img src="WhatsApp Image 2026-01-31 at 3.21.49 PM (1).jpeg" class="gallery-img" alt="DP Structure with Transformer">
+                        <img src="WhatsApp Image 2026-01-31 at 3.21.49 PM.jpeg" class="gallery-img" alt="Transformer Installation Site">
+                        <img src="WhatsApp Image 2026-01-31 at 3.21.48 PM.jpeg" class="gallery-img" alt="Double Pole Structure">
+                        <img src="WhatsApp Image 2026-01-31 at 3.21.22 PM.jpeg" class="gallery-img" alt="Rural Electrification Pole">
+                        <img src="WhatsApp Image 2026-01-31 at 3.21.21 PM.jpeg" class="gallery-img" alt="Completed DP Structure">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.46 PM.jpeg" class="gallery-img" alt="Distribution Transformer (DTC) Installation">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.21 PM.jpeg" class="gallery-img" alt="Transformer Close View">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.20 PM.jpeg" class="gallery-img" alt="HT Metering Cubicle">
+                        
+                        <!-- 3. Cabling & Components -->
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.17 PM.jpeg" class="gallery-img" alt="VCB Kiosk Unit">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.15 PM.jpeg" class="gallery-img" alt="DP Structure Overhead Line">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.09 PM.jpeg" class="gallery-img" alt="Underground Cable Laying HDPE Pipe">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.06 PM.jpeg" class="gallery-img" alt="Cable Riser on Pole">
+                        <img src="WhatsApp Image 2026-01-31 at 3.11.03 PM.jpeg" class="gallery-img" alt="Metering Box Installation">
+                    </div>
+                </div>
+                
+                <div class="modal-text">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-navy);">Electrical Infrastructure Developer & Expert</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                        Ameya Energy Solutions is a licensed <strong>Class-A Electrical Contractor</strong> and Infrastructure Developer. We specialize in complex high-voltage projects that require precision, safety, and deep technical expertise. From 11kV/33kV substations to industrial VCB panels and underground cabling, we handle end-to-end electrification for industries and townships.
+                    </p>
+                    <ul style="display: grid; gap: 10px; margin-bottom: 2rem;">
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>DTC (Transformer) Erection & Commissioning</span></li>
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>HT/LT Overhead Lines & Underground Cabling</span></li>
+                        <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="check-circle" color="#10B981" size="18"></i> <span>Industrial VCB Panel & Substation Work</span></li>
+                    </ul>
+                    <a href="https://wa.me/917397898506?text=I%20need%20a%20quote%20for%20Electrical%20Work" class="btn btn-primary" style="width: auto;">Request Electrical Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initialize Icons & Modal Logic -->
     <script>
         lucide.createIcons();
+
+        // Modal Logic
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        // Close modal if clicking outside content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Mobile Menu Logic
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
